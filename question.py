@@ -1,6 +1,6 @@
 """
-Question Extraction Module
-Structure-aware PDF question extractor for exam papers
+Question Extraction Module with DeepSeek R1 Integration
+Structure-aware PDF question extractor + AI solver
 """
 
 import os
@@ -9,6 +9,7 @@ import requests
 import json
 import re
 import datetime
+import base64
 
 class QuestionExtractor:
     def __init__(self, model_name="llama3.2:1b", output_dir="temp"):
@@ -16,6 +17,7 @@ class QuestionExtractor:
         self.model_name = model_name
         self.ollama_url = "http://localhost:11434/api/generate"
         self.output_dir = output_dir
+        self.deepseek_api_url = "https://api.deepseek.com/v1/chat/completions"  # Update with actual URL
         
         # Structural patterns for exam format
         self.question_delimiter_pattern = r'Question Number\s*:\s*(\d+)\s+Question Id\s*:\s*(\d+)'

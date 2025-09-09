@@ -1,74 +1,69 @@
 """
-Main Application
-PDF Question Extraction Tool
+Complete Integrated Workflow with Ollama
+1. Extract questions using question.py  
+2. Solve questions using Ollama + DeepSeek R1
+3. Generate LaTeX question bank
+4. Compile to final PDF
 """
 
 import os
 import sys
 from question import QuestionExtractor
-
-def print_banner():
-    """Print application banner"""
-    print("=" * 60)
-    print("🎯 PDF QUESTION EXTRACTOR")
-    print("📚 Structure-aware question extraction from exam papers")
-    print("=" * 60)
-
-def print_results(results):
-    """Print extraction results"""
-    if results["success"]:
-        print(f"✅ SUCCESS!")
-        print(f"📊 Questions found: {results['questions_found']}")
-        print(f"📸 Questions extracted: {results['questions_extracted']}")
-        print(f"📁 Output directory: temp/")
-        print(f"📋 Report: {os.path.basename(results['report_path'])}")
-        print(f"🌐 Viewer: {os.path.basename(results['viewer_path'])}")
-        print(f"\n💡 Open temp/viewer.html in your browser to view all questions")
-    else:
-        print(f"❌ FAILED: {results['message']}")
+from ollama_solver import OllamaDeepSeekSolver
 
 def main():
-    print_banner()
+    print("=" * 70)
+    print("🎯 AI QUESTION BANK GENERATOR WITH OLLAMA")
+    print("📚 PDF → Questions → Ollama DeepSeek R1 → LaTeX → PDF")
+    print("=" * 70)
     
-    # Check command line arguments
     if len(sys.argv) != 2:
         print("Usage: python main.py <pdf_file>")
-        print("\nExample:")
-        print("  python main.py exam_paper.pdf")
-        print("  python main.py test.pdf")
         sys.exit(1)
     
     pdf_path = sys.argv[1]
     
-    # Validate PDF file
     if not os.path.exists(pdf_path):
-        print(f"❌ Error: File '{pdf_path}' not found")
+        print(f"❌ File not found: {pdf_path}")
         sys.exit(1)
     
-    if not pdf_path.lower().endswith('.pdf'):
-        print(f"❌ Error: '{pdf_path}' is not a PDF file")
-        sys.exit(1)
+    # STEP 1: Extract Questions
+    print("\n🔍 STEP 1: EXTRACTING QUESTIONS")
+    print("-" * 40)
     
-    print(f"📄 Processing: {pdf_path}")
-    
-    # Initialize extractor
     extractor = QuestionExtractor()
-    
-    # Check if temp directory is clean (optional cleanup)
-    if os.path.exists("temp") and os.listdir("temp"):
-        response = input("🗑️  Temp directory contains files. Clean it? (y/n): ")
-        if response.lower() == 'y':
-            extractor.clean_temp_directory()
-            print("✅ Temp directory cleaned")
-    
-    # Process PDF
-    print("🚀 Starting extraction...")
     results = extractor.process_pdf(pdf_path)
     
-    # Print results
-    print("\n" + "=" * 60)
-    print_results(results)
-    print("=" * 60)
+    if not results["success"]:
+        print(f"❌ Extraction failed: {results['message']}")
+        sys.exit(1)
+    
+    print(f"✅ Extracted {results['questions_extracted']} questions")
+    
+    # STEP 2: Solve with Ollama + DeepSeek R1
+    print("\n🧠 STEP 2: SOLVING WITH OLLAMA + DEEPSEEK R1")
+    print("-" * 40)
+    
+    solver = OllamaDeepSeekSolver(
+        images_dir='temp',
+        latex_dir='latex_output',
+        model_name='deepseek-r1:1.5b'  # Use your available model
+    )
+    
+    workflow_results = solver.run_complete_workflow()
+    
+    if workflow_results:
+        print(f"\n🎉 SUCCESS!")
+        print(f"📊 Questions processed: {workflow_results['total_questions']}")
+        print(f"📄 Final PDF: {workflow_results['pdf_path']}")
+        print(f"📁 LaTeX source: {workflow_results['latex_dir']}")
+        
+        print(f"\n💡 Your complete question bank PDF is ready!")
+        print(f"📖 Open: {workflow_results['pdf_path']}")
+        
+    else:
+        print("❌ Workflow failed")
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()
