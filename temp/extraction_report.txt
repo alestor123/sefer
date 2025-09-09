@@ -1,0 +1,116 @@
+PDF QUESTION EXTRACTION REPORT
+==================================================
+PDF File: test.pdf
+Extraction Time: 2025-09-09 19:11:04.300211
+Total Questions: 18
+==================================================
+
+Q144 | Page 1
+ID: 6406531043192
+File: Q144_P1_ARE_YOU_SURE_YOU_HAVE_TO_WRITE_EXAM_FOR.png
+Text: ARE YOU SURE YOU HAVE TO WRITE EXAM FOR THIS SUBJECT?
+------------------------------
+
+Q145 | Page 2
+ID: 6406531043194
+File: Q145_P2_What_is_the_difference_between_the_expen.png
+Text: What is the difference between the expenditure on Groceries and Utilities?
+------------------------------
+
+Q146 | Page 2
+ID: 6406531043195
+File: Q146_P2_How_much_money_does_the_family_spend_on.png
+Text: How much money does the family spend on Rent and Utilities combined?
+------------------------------
+
+Q147 | Page 3
+ID: 6406531043196
+File: Q147_P3_Which_of_the_following_options_isare_in.png
+Text: Which of the following options is/are incorrect for a variable having ratio scale of measurement?
+------------------------------
+
+Q148 | Page 3
+ID: 6406531043197
+File: Q148_P3_average_of_the_last_8_observations_is_53.png
+Text: average of the last 8 observations is 53, what is the value of the 8th observation?
+------------------------------
+
+Q149 | Page 3
+ID: 6406531043209
+File: Q149_P3_probability_that_it_will_continue_to_fun.png
+Text: probability that it will continue to function for at least another 100 hours?
+------------------------------
+
+Q150 | Page 4
+ID: 6406531043199
+File: Q150_P4_In_how_many_ways_can_the_team_be_formed.png
+Text: In how many ways can the team be formed if two particular students must be included?
+------------------------------
+
+Q151 | Page 4
+ID: 6406531043200
+File: Q151_P4_In_how_many_ways_can_the_team_be_formed.png
+Text: In how many ways can the team be formed if two particular students must not be included?
+------------------------------
+
+Q152 | Page 5
+ID: 6406531043201
+File: Q152_P5_vowels_always_come_together.png
+Text: vowels always come together?
+------------------------------
+
+Q153 | Page 5
+ID: 6406531043202
+File: Q153_P5_probability_that_a_person_chosen_at_rand.png
+Text: probability that a person chosen at random likes either tea or coffee?
+------------------------------
+
+Q154 | Page 5
+ID: 6406531043203
+File: Q154_P5_blue_Which_of_the_following_statements.png
+Text: blue. Which of the following statement(s) is(are) true?
+------------------------------
+
+Q155 | Page 6
+ID: 6406531043212
+File: Q155_P6_What_are_the_options_for_question_number.png
+Text: What are the options for question number 155?
+------------------------------
+
+Q156 | Page 7
+ID: 6406531043205
+File: Q156_P7_What_is_the_correct_option_for_question.png
+Text: What is the correct option for question number 156?
+------------------------------
+
+Q157 | Page 7
+ID: 6406531043206
+File: Q157_P7_What_are_the_possible_answers_for_this_s.png
+Text: What are the possible answers for this short answer question?
+------------------------------
+
+Q158 | Page 7
+ID: 6406531043207
+File: Q158_P7_least_4_matches.png
+Text: least 4 matches?
+------------------------------
+
+Q159 | Page 8
+ID: 6406531043208
+File: Q159_P8_What_is_the_correct_option_for_question.png
+Text: What is the correct option for question 159?
+------------------------------
+
+Q160 | Page 8
+ID: 6406531043210
+File: Q160_P8_What_is_the_probability_that_exactly_5_c.png
+Text: What is the probability that exactly 5 customers will enter the store in a 15-
+minute period?
+------------------------------
+
+Q161 | Page 9
+ID: 6406531043211
+File: Q161_P9_metro_station_at_random_then_what_is_th.png
+Text: metro station at random, then what is the probability that he has to wait at least 4 minutes?
+------------------------------
+
