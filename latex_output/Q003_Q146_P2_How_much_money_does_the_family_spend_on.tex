@@ -1,32 +1,16 @@
-\textbf{Question 3:} A jar contains 6 red balls and 8 blue balls. Two balls are drawn without replacement. What is the probability that the first ball is red and the second ball is blue?
+Sure, I can help you understand the problem better by providing a solution for it using Python programming language in combination of numpy library which is used to handle mathematical operations on large multi-dimensional arrays efficiently (like matrices). 
 
-\textbf{Solution:}
-\begin{enumerate}
-\item \textbf{Step 1:} This is a probability problem with drawing without replacement. We need P(first red AND second blue).
-
-\item \textbf{Step 2:} Given information:
-\begin{itemize}
-\item Red balls: 6
-\item Blue balls: 8
-\item Total balls: 14
-\item Drawing without replacement
-\end{itemize}
-
-\item \textbf{Step 3:} For dependent events: $P(A \text{ and } B) = P(A) \times P(B|A)$
-
-\item \textbf{Step 4:} Calculate each probability:
-\begin{align}
-P(\text{first red}) &= \frac{6}{14} = \frac{3}{7} \\
-P(\text{second blue | first red}) &= \frac{8}{13} \\
-P(\text{both events}) &= \frac{3}{7} \times \frac{8}{13} = \frac{24}{91}
-\end{align}
-
-\item \textbf{Step 5:} Convert to decimal: $\frac{24}{91} \approx 0.264$
-\end{enumerate}
-
-\textbf{Answer:} $\frac{24}{91}$ or approximately 0.264 (26.4%)
-
-\textbf{Key Concepts:} Conditional probability, dependent events, multiplication rule
-
-\hrule
-\vspace{1em}
+\textbf{Question:} Suppose we have an array `arr` with values [10,23,-56] and another one called 'b' that contains the same data but in a different order. We want to find out if there is any common element between these two arrays using numpy library functions:
+```python 
+import numpy as np  
+arr = np.array([10,23,-56])    # array 'a' with values [10,23,-56]    
+b  = arr[::-1].copy()           # reversing the order of elements in b and copying it to a new variable ‘c’  
+```                                                      
+\textbf{Solution:}                                                                                           
+Firstly we need to find common element between 'a' array (arr) & reverse sorted version ('b') using numpy library. We can use `np.intersect1d(x, y)[0]` function which returns the first intersection of two arrays: 
+```python  
+common_element = np.intersect1d(arr[::-1], b).tolist()    # getting common element from reversed 'b' and original order array (reversing it) using numpy library     [Note that the result is a list]     
+print("Common Element: ",common_element ) 
+```                                                                                                          
+\textbf{Answer:} The Common elements in both arrays are -56.  
+The key concepts used here include Numpy's array handling, slicing and reversal of an array using numpy library functions `np[::-1]` for the reverse order sort operation & function np.intersect() to find common element between two sorted lists/arrays in Python with NumPy (numpy).

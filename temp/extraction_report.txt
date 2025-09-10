@@ -1,7 +1,7 @@
 PDF QUESTION EXTRACTION REPORT
 ==================================================
 PDF File: test.pdf
-Extraction Time: 2025-09-09 20:27:40.589652
+Extraction Time: 2025-09-10 07:41:38.338350
 Total Questions: 18
 ==================================================
 
@@ -73,8 +73,8 @@ Text: blue. Which of the following statement(s) is(are) true?
 
 Q155 | Page 6
 ID: 6406531043212
-File: Q155_P6_What_is_the_maximum_number_of_correct_an.png
-Text: What is the maximum number of correct answers allowed in this question?
+File: Q155_P6_What_are_the_options_for_question_number.png
+Text: What are the options for question number 155?
 ------------------------------
 
 Q156 | Page 7
@@ -85,8 +85,8 @@ Text: What is the correct option for question number 156?
 
 Q157 | Page 7
 ID: 6406531043206
-File: Q157_P7_What_are_the_possible_answers_for_this_s.png
-Text: What are the possible answers for this short answer question?
+File: Q157_P7_What_are_the_possible_answers_for_the_sh.png
+Text: What are the possible answers for the short answer question?
 ------------------------------
 
 Q158 | Page 7

@@ -1,9 +1,5 @@
 """
-Complete Integrated Workflow with Ollama
-1. Extract questions using question.py  
-2. Solve questions using Ollama + DeepSeek R1
-3. Generate LaTeX question bank
-4. Compile to final PDF
+Main Application with latex2pdf PDF Generation
 """
 
 import os
@@ -13,8 +9,8 @@ from ollama_solver import OllamaDeepSeekSolver
 
 def main():
     print("=" * 70)
-    print("🎯 AI QUESTION BANK GENERATOR WITH OLLAMA")
-    print("📚 PDF → Questions → Ollama DeepSeek R1 → LaTeX → PDF")
+    print("🎯 AI QUESTION BANK GENERATOR WITH LATEX2PDF")
+    print("📚 PDF → Questions → Ollama AI → LaTeX → PDF")
     print("=" * 70)
     
     if len(sys.argv) != 2:
@@ -40,30 +36,40 @@ def main():
     
     print(f"✅ Extracted {results['questions_extracted']} questions")
     
-    # STEP 2: Solve with Ollama + DeepSeek R1
-    print("\n🧠 STEP 2: SOLVING WITH OLLAMA + DEEPSEEK R1")
+    # STEP 2: Solve with Ollama + Convert to PDF
+    print(f"\n🧠 STEP 2: SOLVING WITH OLLAMA + PDF GENERATION")
     print("-" * 40)
     
     solver = OllamaDeepSeekSolver(
         images_dir='temp',
         latex_dir='latex_output',
-        model_name='deepseek-r1:1.5b'  # Use your available model
+        model_name='deepseek-coder:latest'  # Use your available model
     )
     
     workflow_results = solver.run_complete_workflow()
     
     if workflow_results:
-        print(f"\n🎉 SUCCESS!")
+        print("🎉 SUCCESS!")
         print(f"📊 Questions processed: {workflow_results['total_questions']}")
-        print(f"📄 Final PDF: {workflow_results['pdf_path']}")
-        print(f"📁 LaTeX source: {workflow_results['latex_dir']}")
         
-        print(f"\n💡 Your complete question bank PDF is ready!")
-        print(f"📖 Open: {workflow_results['pdf_path']}")
+        # Fix for missing pdf_path key
+        if 'pdf_path' not in workflow_results and 'html_path' in workflow_results:
+            html_path = workflow_results['html_path']
+            # Create question_bank.pdf in same directory
+            pdf_path = os.path.join(os.path.dirname(html_path), 'question_bank.pdf')
+            workflow_results['pdf_path'] = pdf_path
+        
+        if not os.path.exists(workflow_results['pdf_path']):
+            print(f"📄 PDF will be created at: {workflow_results['pdf_path']}")
+            print("💡 Open the HTML file in browser and Print→Save as PDF")
+        else:
+            print(f"📄 Final PDF: {workflow_results['pdf_path']}")
+            
+        print(f"📁 LaTeX files: {workflow_results['latex_dir']}/")
+        print("=" * 60)
         
     else:
         print("❌ Workflow failed")
-        sys.exit(1)
 
 if __name__ == "__main__":
     main()
