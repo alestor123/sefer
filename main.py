@@ -1,7 +1,6 @@
 """
-Main Application with latex2pdf PDF Generation
+Main Application with latex.build_pdf PDF Generation
 """
-
 import os
 import sys
 from question import QuestionExtractor
@@ -9,7 +8,7 @@ from ollama_solver import OllamaDeepSeekSolver
 
 def main():
     print("=" * 70)
-    print("🎯 AI QUESTION BANK GENERATOR WITH LATEX2PDF")
+    print("🎯 AI QUESTION BANK GENERATOR WITH LATEX.BUILD_PDF")
     print("📚 PDF → Questions → Ollama AI → LaTeX → PDF")
     print("=" * 70)
     
@@ -43,7 +42,7 @@ def main():
     solver = OllamaDeepSeekSolver(
         images_dir='temp',
         latex_dir='latex_output',
-        model_name='deepseek-coder:latest'  # Use your available model
+        model_name='llama3.1:8b'
     )
     
     workflow_results = solver.run_complete_workflow()
@@ -51,25 +50,12 @@ def main():
     if workflow_results:
         print("🎉 SUCCESS!")
         print(f"📊 Questions processed: {workflow_results['total_questions']}")
-        
-        # Fix for missing pdf_path key
-        if 'pdf_path' not in workflow_results and 'html_path' in workflow_results:
-            html_path = workflow_results['html_path']
-            # Create question_bank.pdf in same directory
-            pdf_path = os.path.join(os.path.dirname(html_path), 'question_bank.pdf')
-            workflow_results['pdf_path'] = pdf_path
-        
-        if not os.path.exists(workflow_results['pdf_path']):
-            print(f"📄 PDF will be created at: {workflow_results['pdf_path']}")
-            print("💡 Open the HTML file in browser and Print→Save as PDF")
-        else:
-            print(f"📄 Final PDF: {workflow_results['pdf_path']}")
-            
+        print(f"📄 Final PDF: {workflow_results['pdf_path']}")
         print(f"📁 LaTeX files: {workflow_results['latex_dir']}/")
-        print("=" * 60)
-        
+        print("=" * 70)
     else:
         print("❌ Workflow failed")
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()
