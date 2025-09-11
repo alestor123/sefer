@@ -42,7 +42,7 @@ def main():
     solver = OllamaDeepSeekSolver(
         images_dir='temp',
         latex_dir='latex_output',
-        model_name='llama3.1:8b'
+        model_name='llava:7b'
     )
     
     workflow_results = solver.run_complete_workflow()

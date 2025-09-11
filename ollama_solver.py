@@ -88,6 +88,7 @@ Use clear mathematical notation."""
         payload = {
             "model": self.model_name,
             "prompt": prompt,
+            "keep_alive": -1,
             "images": [base64_img],
             "stream": False,
             "options": {
